@@ -1,0 +1,29 @@
+{
+  "name": "skyta-vue",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "server": "node dev-server.js",
+    "build": "vite build",
+    "preview": "vite preview",
+    "setup:stripe": "node scripts/setup-stripe-products.js"
+  },
+  "dependencies": {
+    "@plunk/node": "^3.0.3",
+    "@stripe/stripe-js": "^8.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "lucide-vue-next": "^0.544.0",
+    "stripe": "^19.1.0",
+    "video.js": "^8.23.4",
+    "vue": "^3.5.22",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.1.7"
+  }
+}

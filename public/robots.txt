@@ -1,0 +1,21 @@
+# Skyta.space Robots.txt
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://skyta.space/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Popular bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

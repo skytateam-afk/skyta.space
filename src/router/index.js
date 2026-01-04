@@ -28,8 +28,8 @@ const router = createRouter({
       component: Terms
     },
     {
-      path: '/quiz',
-      name: 'quiz',
+      path: '/assessment',
+      name: 'assessment',
       component: Quiz
     },
     {

@@ -9,6 +9,7 @@
     <LearningPortalSection />
     <FeaturesSection />
     <UseCasesSection />
+    <AssessmentCTA
     <RoadmapSection />
     <PricingSection />
     <EarlyAccessSection />
@@ -26,4 +27,5 @@ import RoadmapSection from "../components/sections/RoadmapSection.vue";
 import PricingSection from "../components/sections/PricingSection.vue";
 import EarlyAccessSection from "../components/sections/EarlyAccessSection.vue";
 import VideoFull from "../components/VideoFull.vue";
+import AssessmentCTA from "../components/sections/AssessmentCTA.vue";
 </script>

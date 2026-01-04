@@ -7,6 +7,7 @@ import Terms from '../views/Terms.vue'
 import Privacy from '../views/Privacy.vue'
 import Brochure from '../views/Brochure.vue'
 import NotFound from '../views/NotFound.vue'
+import Quiz from '../views/Quiz.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,6 +26,11 @@ const router = createRouter({
       path: '/terms',
       name: 'term',
       component: Terms
+    },
+    {
+      path: '/assessment',
+      name: 'assessment',
+      component: Quiz
     },
     {
       path: '/privacy',

@@ -442,33 +442,45 @@ function submitQuiz() {
 function calculateScore() {
   const trackScores = {
     "Goals and Motivation": {
+      // Q1: Primary goal
       "Curiosity and general knowledge": 5,
       "School support or STEM improvement": 10,
       "Career change or upskilling": 15,
       "Mission operations interest": 20,
       "Leadership, policy, or entrepreneurship": 25,
-    },
-    "STEM Foundations": {
-      "6 hours": 20,
-      "12 hours": 15,
-      "90 minutes": 25,
-      "24 hours": 10,
-      "7 days": 5,
+      // Q2: Time commitment per week
+      "30 to 60 minutes": 5,
+      "1 to 2 hours": 10,
+      "2 to 4 hours": 15,
+      "4 to 6 hours": 20,
+      "6+ hours": 25,
+      // Q3: Starting point
       Beginner: 5,
       "Some basics": 10,
       "Comfortable with STEM": 15,
       "Experienced in tech or engineering": 20,
       "Already working in a related field": 25,
+    },
+    "STEM Foundations": {
+      // Q1: Orbit timing
+      "6 hours": 20,
+      "12 hours": 15,
+      "90 minutes": 25,
+      "24 hours": 10,
+      "7 days": 5,
+      // Q2: Variable example
       "A fixed number like 10": 0,
       "A changing value like speed": 20,
       "A title like 'velocity'": 5,
       "A unit like meters": 0,
       "A label like 'x axis'": 0,
+      // Q3: Cybersecurity
       "Only for computers on Earth": 0,
       "Not relevant to satellites": 0,
       "Protects data links and mission systems": 25,
       "Only about passwords": 5,
       "Only for classified missions": 5,
+      // Q4: Chart reading
       "Ignore it": 0,
       "Look at the title and axes": 20,
       "Guess the trend": 5,
@@ -476,20 +488,24 @@ function calculateScore() {
       "Read comments first": 15,
     },
     "Digital Skills and Data Thinking": {
+      // Q1: Tools used
       None: 0,
       "Excel or Google Sheets": 10,
       "Python or coding tools": 20,
       "GIS or mapping tools": 25,
       "Data dashboards": 20,
+      // Q2: First job target
       "Student exploration": 5,
       "STEM tutor or club leader": 15,
       "Data or cyber entry role": 20,
       "Satellite ops support": 25,
       "Project or program leadership": 25,
+      // Q3: Orbit description
       "A falling motion around Earth": 15,
       "A floating motion with no gravity": 5,
       "A path only rockets can use": 0,
       "A random path": 0,
+      // Q4: Math comfort level
       Low: 0,
       "Basic arithmetic": 5,
       "Algebra comfort": 15,
@@ -497,21 +513,25 @@ function calculateScore() {
       "Strong, use it often": 25,
     },
     "Space Awareness And Career Knowledge": {
+      // Q1: Most interesting topic
       "Planets and exploration": 10,
       "Satellites and orbits": 20,
       "Space data and AI": 25,
       "Space security and policy": 20,
       "Building space programs for communities": 25,
+      // Q2: Teaching preference
       "Avoid it": 0,
       "Use a simple example": 10,
       "Use a diagram": 15,
       "Look up a source and summarize": 20,
       "Teach it with steps and a quiz": 25,
+      // Q3: Learning preference
       "Video only": 5,
       "Reading and notes": 10,
       "Practice exercises": 15,
       "Projects and simulations": 25,
       "Mixed approach": 20,
+      // Q4: Certificates interest
       "Not important": 0,
       "Maybe later": 5,
       "Yes, for motivation": 15,

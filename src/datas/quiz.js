@@ -143,7 +143,7 @@ const quiz = [
         ],
       },
       {
-        question: "Which describes your learning preference??",
+        question: "Which describes your learning preference?",
         option: [
           "Video only",
           "Reading and notes",

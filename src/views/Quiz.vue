@@ -260,10 +260,11 @@
           />
           <button
             @click="submitEmail"
-            :disabled="!userEmail || !userFirstName || !isValidEmail(userEmail)"
-            class="w-full px-4 py-2.5 rounded-lg bg-gradient-to-r from-[#1EDAFC] to-[#18AECA] text-slate-900 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            :disabled="!userEmail || !userFirstName || !isValidEmail(userEmail) || isSubmitting"
+            class="w-full px-4 py-2.5 rounded-lg bg-gradient-to-r from-[#1EDAFC] to-[#18AECA] text-slate-900 font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
-            View my results
+            <Loader2 v-if="isSubmitting" class="w-4 h-4 animate-spin" />
+            <span>{{ isSubmitting ? 'Processing...' : 'View my results' }}</span>
           </button>
         </div>
       </div>
@@ -324,6 +325,7 @@ import {
   CircleDot,
   Compass,
   Crown,
+  Loader2,
   Orbit,
   Rocket,
   Shield,
@@ -343,6 +345,7 @@ const userEmail = ref("");
 const startAssessment = ref(false);
 const showEmailModal = ref(false);
 const showResultModal = ref(false);
+const isSubmitting = ref(false);
 const results = ref({ track: "", score: 0, description: "", icon: Rocket });
 
 const sectionHints = {
@@ -440,124 +443,31 @@ function submitQuiz() {
 }
 
 function calculateScore() {
-  const trackScores = {
-    "Goals and Motivation": {
-      // Q1: Primary goal
-      "Curiosity and general knowledge": 5,
-      "School support or STEM improvement": 10,
-      "Career change or upskilling": 15,
-      "Mission operations interest": 20,
-      "Leadership, policy, or entrepreneurship": 25,
-      // Q2: Time commitment per week
-      "30 to 60 minutes": 5,
-      "1 to 2 hours": 10,
-      "2 to 4 hours": 15,
-      "4 to 6 hours": 20,
-      "6+ hours": 25,
-      // Q3: Starting point
-      Beginner: 5,
-      "Some basics": 10,
-      "Comfortable with STEM": 15,
-      "Experienced in tech or engineering": 20,
-      "Already working in a related field": 25,
-    },
-    "STEM Foundations": {
-      // Q1: Orbit timing
-      "6 hours": 20,
-      "12 hours": 15,
-      "90 minutes": 25,
-      "24 hours": 10,
-      "7 days": 5,
-      // Q2: Variable example
-      "A fixed number like 10": 0,
-      "A changing value like speed": 20,
-      "A title like 'velocity'": 5,
-      "A unit like meters": 0,
-      "A label like 'x axis'": 0,
-      // Q3: Cybersecurity
-      "Only for computers on Earth": 0,
-      "Not relevant to satellites": 0,
-      "Protects data links and mission systems": 25,
-      "Only about passwords": 5,
-      "Only for classified missions": 5,
-      // Q4: Chart reading
-      "Ignore it": 0,
-      "Look at the title and axes": 20,
-      "Guess the trend": 5,
-      "Focus only on colors": 0,
-      "Read comments first": 15,
-    },
-    "Digital Skills and Data Thinking": {
-      // Q1: Tools used
-      None: 0,
-      "Excel or Google Sheets": 10,
-      "Python or coding tools": 20,
-      "GIS or mapping tools": 25,
-      "Data dashboards": 20,
-      // Q2: First job target
-      "Student exploration": 5,
-      "STEM tutor or club leader": 15,
-      "Data or cyber entry role": 20,
-      "Satellite ops support": 25,
-      "Project or program leadership": 25,
-      // Q3: Orbit description
-      "A falling motion around Earth": 15,
-      "A floating motion with no gravity": 5,
-      "A path only rockets can use": 0,
-      "A random path": 0,
-      // Q4: Math comfort level
-      Low: 0,
-      "Basic arithmetic": 5,
-      "Algebra comfort": 15,
-      "Trig and calculus exposure": 20,
-      "Strong, use it often": 25,
-    },
-    "Space Awareness And Career Knowledge": {
-      // Q1: Most interesting topic
-      "Planets and exploration": 10,
-      "Satellites and orbits": 20,
-      "Space data and AI": 25,
-      "Space security and policy": 20,
-      "Building space programs for communities": 25,
-      // Q2: Teaching preference
-      "Avoid it": 0,
-      "Use a simple example": 10,
-      "Use a diagram": 15,
-      "Look up a source and summarize": 20,
-      "Teach it with steps and a quiz": 25,
-      // Q3: Learning preference
-      "Video only": 5,
-      "Reading and notes": 10,
-      "Practice exercises": 15,
-      "Projects and simulations": 25,
-      "Mixed approach": 20,
-      // Q4: Certificates interest
-      "Not important": 0,
-      "Maybe later": 5,
-      "Yes, for motivation": 15,
-      "Yes, for jobs": 20,
-      "Yes, for academic credit if available": 25,
-    },
-  };
+  let correctAnswers = 0;
+  let totalQuestions = 0;
 
-  let totalScore = 0;
   quiz.value.forEach((section, sIdx) => {
     section.list.forEach((question, qIdx) => {
       const key = `${sIdx}-${qIdx}`;
-      const answer = selections[key];
-      if (
-        answer &&
-        trackScores[section.section] &&
-        trackScores[section.section][answer]
-      ) {
-        totalScore += trackScores[section.section][answer];
+      const userAnswer = selections[key];
+      
+      if (userAnswer && question.answer !== undefined) {
+        totalQuestions++;
+        // Get the index of the user's selected answer
+        const selectedIndex = question.option.indexOf(userAnswer);
+        
+        // Check if it matches the correct answer index
+        if (selectedIndex === question.answer) {
+          correctAnswers++;
+        }
       }
     });
   });
 
-  const maxPossible = 500;
-  const normalizedScore = Math.round((totalScore / maxPossible) * 100);
-  return Math.min(100, normalizedScore);
+  // Calculate percentage score
+  if (totalQuestions === 0) return 0;
+  const score = Math.round((correctAnswers / totalQuestions) * 100);
+  return score;
 }
 
 function getTrackInfo(score) {
@@ -610,7 +520,9 @@ function isValidEmail(email) {
 }
 
 async function submitEmail() {
-  if (!isValidEmail(userEmail.value) || !userFirstName.value.trim()) return;
+  if (!isValidEmail(userEmail.value) || !userFirstName.value.trim() || isSubmitting.value) return;
+
+  isSubmitting.value = true;
 
   const score = calculateScore();
   const track = getTrackInfo(score);
@@ -648,6 +560,8 @@ async function submitEmail() {
   } catch (error) {
     console.error("Error sending email:", error);
     // Still show results even if email fails
+  } finally {
+    isSubmitting.value = false;
   }
 
   showEmailModal.value = false;
@@ -667,7 +581,7 @@ function closeModal() {
   }
 
   //   redirect to earlyaccess form on homepage
-  window.location.href = "/#earlyaccess";
+  window.location.href = "/#early-access";
 }
 
 function sectionProgress(sectionIndex) {

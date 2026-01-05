@@ -1,13 +1,17 @@
 {
   "earlybird": {
     "monthly": "price_1SekzXFD83b7BXpoaunl1X1L",
+    "quarterly": "price_1SekzXFD83b7BXpoaunl1X1L",
     "yearly": "price_1SekzXFD83b7BXpolKPdK0Bm"
   },
   "premium": {
     "monthly": "price_1SekzYFD83b7BXpoehMUuPtg",
+    "quarterly": "price_1SekzYFD83b7BXpoFpB3hUjK",
     "yearly": "price_1SekzYFD83b7BXpoFpB3hUjK"
   },
-  "founder": {
-    "lifetime": "price_1SekzZFD83b7BXpo2f0lRjG9"
+  "max": {
+    "monthly": "price_1SekzZFD83b7BXpo2f0lRjG9",
+    "quarterly": "price_1SekzZFD83b7BXpo2f0lRjG9",
+    "yearly": "price_1SekzZFD83b7BXpo2f0lRjG9"
   }
 }

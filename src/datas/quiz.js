@@ -11,6 +11,7 @@ const quiz = [
           "Mission operations interest",
           "Leadership, policy, or entrepreneurship",
         ],
+        answer: 2
       },
       {
         question: "How much time can you commit per week?",
@@ -21,6 +22,7 @@ const quiz = [
           "4 to 6 hours",
           "6+ hours",
         ],
+        answer: 2
       },
       {
         question: "Which best describes your starting point?",
@@ -31,6 +33,7 @@ const quiz = [
           "Experienced in tech or engineering",
           "Already working in a related field",
         ],
+        answer: 1
       },
     ],
   },
@@ -41,6 +44,7 @@ const quiz = [
         question:
           "If a satellite is in low Earth orbit, it generally orbits Earth about every:",
         option: ["6 hours", "12 hours", "90 minutes", "24 hours", "7 days"],
+        answer: 2
       },
       {
         question: "Which is the best example of a variable in a simple physics problem?",
@@ -51,6 +55,7 @@ const quiz = [
           "A unit like meters",
           "A label like 'x axis'",
         ],
+        answer: 1
       },
       {
         question: "Which statement best describes cybersecurity in space systems?",
@@ -61,6 +66,7 @@ const quiz = [
           "Only about passwords",
           "Only for classified missions",
         ],
+        answer: 2
       },
       {
         question: "When you see a chart, what do you usually do first?",
@@ -71,6 +77,7 @@ const quiz = [
           "Focus only on colors",
           "Read comments first",
         ],
+        answer: 1
       },
     ],
   },
@@ -86,6 +93,7 @@ const quiz = [
           "GIS or mapping tools",
           "Data dashboards",
         ],
+        answer: 1
       },
       {
         question: "What is a realistic first job target for you?",
@@ -96,6 +104,7 @@ const quiz = [
           "Satellite ops support",
           "Project or program leadership",
         ],
+        answer: 2
       },
       {
         question: "Which best describes an orbit?",
@@ -106,6 +115,7 @@ const quiz = [
           "Experienced in tech or engineering",
           "A random path",
         ],
+        answer: 0
       },
       {
         question: "What is your comfort level with math today?",
@@ -116,6 +126,7 @@ const quiz = [
           "Trig and calculus exposure",
           "Strong, use it often",
         ],
+        answer: 2
       },
     ],
   },
@@ -131,6 +142,7 @@ const quiz = [
           "Space security and policy",
           "Building space programs for communities",
         ],
+        answer: 2
       },
       {
         question: "If you had to explain a concept to a friend, you would:",
@@ -141,6 +153,7 @@ const quiz = [
           "Look up a source and summarize",
           "Teach it with steps and a quiz",
         ],
+        answer: 4
       },
       {
         question: "Which describes your learning preference?",
@@ -151,6 +164,7 @@ const quiz = [
           "Projects and simulations",
           "Mixed approach",
         ],
+        answer: 4
       },
       {
         question: "Are you interested in certificates?",
@@ -161,6 +175,7 @@ const quiz = [
           "Yes, for jobs",
           "Yes, for academic credit if available",
         ],
+        answer: 3
       },
     ],
   },

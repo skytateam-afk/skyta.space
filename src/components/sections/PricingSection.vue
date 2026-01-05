@@ -61,7 +61,7 @@
           <div class="absolute inset-0 bg-[#00121454] rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
           <div class="relative bg-[#00121454] backdrop-blur-sm border border-transparent rounded-2xl p-8 hover:border-cyan-700 transition-all duration-300 flex flex-col w-full">
             <div class="mb-6">
-              <h3 class="text-2xl font-bold text-white mb-2">Free</h3>
+              <h3 class="text-2xl font-bold text-white mb-2">Launch (Free)</h3>
               <p class="text-zinc-400 text-sm">Get started with space learning</p>
             </div>
 
@@ -142,7 +142,7 @@
             </div>
 
             <div class="mb-6 mt-2">
-              <h3 class="text-2xl font-bold text-white mb-2">Early Bird</h3>
+              <h3 class="text-2xl font-bold text-white mb-2">Pro (Early Bird)</h3>
               <p class="text-zinc-400 text-sm">Best for individuals getting started with structured learning.</p>
             </div>
 
@@ -216,7 +216,7 @@
           <div class="absolute inset-0 bg-[#00121454] rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
           <div class="relative bg-[#00121454] backdrop-blur-sm border border-transparent rounded-2xl p-8 hover:border-cyan-700 transition-all duration-300 flex flex-col w-full">
             <div class="mb-6">
-              <h3 class="text-2xl font-bold text-white mb-2">Premium</h3>
+              <h3 class="text-2xl font-bold text-white mb-2">Pro Plus (Premium)</h3>
               <p class="text-zinc-400 text-sm">Best for learners who want real-time tracking and deeper AI-powered insights.</p>
             </div>
 
@@ -291,7 +291,7 @@
           <div class="relative bg-[#00121454] backdrop-blur-sm border border-transparent rounded-2xl p-8 hover:border-cyan-700 transition-all duration-300 flex flex-col w-full">
             <div class="mb-6">
               <div class="flex items-center justify-between mb-2">
-                <h3 class="text-2xl font-bold text-white">Advanced</h3>
+                <h3 class="text-2xl font-bold text-white">Max (Advanced)</h3>
               </div>
               <p class="text-zinc-400 text-sm">Maximum individual access with the highest Felix AI limits.</p>
             </div>
@@ -366,7 +366,7 @@
           <div class="absolute inset-0 bg-[#00121454] rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
           <div class="relative bg-[#00121454] backdrop-blur-sm border border-transparent rounded-2xl p-8 hover:border-cyan-700 transition-all duration-300 flex flex-col w-full">
             <div class="mb-6">
-              <h3 class="text-2xl font-bold text-white mb-2">Enterprise</h3>
+              <h3 class="text-2xl font-bold text-white mb-2">District / Campus (Enterprise)</h3>
               <p class="text-zinc-400 text-sm">Built for schools: seats, dashboards, reports, and LMS integration.</p>
             </div>
 

@@ -30,6 +30,17 @@
             Monthly
           </button>
           <button
+            @click="billingPeriod = 'quarterly'"
+            :class="[
+              'px-6 py-2 rounded-md text-sm font-medium transition-all duration-200',
+              billingPeriod === 'quarterly'
+                ? 'bg-[#0C5765] text-white shadow-lg shadow-[#0C5765]/25'
+                : 'text-zinc-400 hover:text-zinc-300'
+            ]"
+          >
+            Quarterly
+          </button>
+          <button
             @click="billingPeriod = 'yearly'"
             :class="[
               'px-6 py-2 rounded-md text-sm font-medium transition-all duration-200',
@@ -97,6 +108,12 @@
                 </svg>
                 <span class="text-zinc-300 text-sm">Basic progress tracking</span>
               </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-zinc-300 text-sm">Start learning instantly (no credit card)</span>
+              </li>
             </ul>
 
             <button 
@@ -126,17 +143,17 @@
 
             <div class="mb-6 mt-2">
               <h3 class="text-2xl font-bold text-white mb-2">Early Bird</h3>
-              <p class="text-zinc-400 text-sm">Full AI-powered learning access</p>
+              <p class="text-zinc-400 text-sm">Best for individuals getting started with structured learning.</p>
             </div>
 
             <!-- Pricing Options -->
             <div class="mb-6">
               <div class="flex items-baseline gap-2 mb-4">
-                <span class="text-4xl font-bold text-white">{{ billingPeriod === 'monthly' ? '$19.99' : '$154.88' }}</span>
-                <span class="text-zinc-400">{{ billingPeriod === 'monthly' ? '/month' : '/year' }}</span>
+                <span class="text-4xl font-bold text-white">{{ billingPeriod === 'monthly' ? '$9.99' : billingPeriod === "quarterly" ? '$26.97' : '$95.90' }}</span>
+                <span class="text-zinc-400">{{ billingPeriod === 'monthly' ? '/month' : billingPeriod === "quarterly" ? '/quarter' : '/year' }}</span>
               </div>
               <div class="text-sm text-zinc-400">
-                {{ billingPeriod === 'monthly' ? 'Billed monthly' : 'Billed annually' }}
+                {{ billingPeriod === 'monthly' ? 'Billed monthly' : billingPeriod === "quarterly" ? 'Billed quarterly' : 'Billed annually' }}
               </div>
             </div>
 
@@ -146,19 +163,19 @@
                 <svg class="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">Full access to all topics & lessons</span>
+                <span class="text-zinc-300 text-sm">10+ courses available now (new drops added regularly)</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">500 AI assistant queries/month</span>
+                <span class="text-zinc-300 text-sm">500 Felix AI queries per month</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">Gamified challenges & missions</span>
+                <span class="text-zinc-300 text-sm">Gamified challenges and missions</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -170,19 +187,13 @@
                 <svg class="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">Learning streak tracking</span>
+                <span class="text-zinc-300 text-sm">Learning streak plus progress tracking</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">Early user recognition badge</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span class="text-zinc-300 text-sm">Ad-free experience</span>
+                <span class="text-zinc-300 text-sm">Ad-free plus early user badge</span>
               </li>
             </ul>
 
@@ -205,18 +216,18 @@
           <div class="absolute inset-0 bg-[#00121454] rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
           <div class="relative bg-[#00121454] backdrop-blur-sm border border-transparent rounded-2xl p-8 hover:border-cyan-700 transition-all duration-300 flex flex-col w-full">
             <div class="mb-6">
-              <h3 class="text-2xl font-bold text-white mb-2">Premium</h3>
-              <p class="text-zinc-400 text-sm">Advanced features & real-time data</p>
+              <h3 class="text-2xl font-bold text-white mb-2">Pro Plud (Premium)</h3>
+              <p class="text-zinc-400 text-sm">Best for learners who want real-time tracking and deeper AI-powered insights.</p>
             </div>
 
             <!-- Pricing Options -->
             <div class="mb-6">
               <div class="flex items-baseline gap-2 mb-4">
-                <span class="text-4xl font-bold text-white">{{ billingPeriod === 'monthly' ? '$29.99' : '$227.99' }}</span>
-                <span class="text-zinc-400">{{ billingPeriod === 'monthly' ? '/month' : '/year' }}</span>
+                <span class="text-4xl font-bold text-white">{{ billingPeriod === 'monthly' ? '$19.99' : billingPeriod === 'quarterly' ? '$53.97' : '191.901' }}</span>
+                <span class="text-zinc-400">{{ billingPeriod === 'monthly' ? '/month' : billingPeriod === 'quarterly' ? '/quarter' : '/year' }}</span>
               </div>
               <div class="text-sm text-zinc-400">
-                {{ billingPeriod === 'monthly' ? 'Billed monthly' : 'Billed annually' }}
+                {{ billingPeriod === 'monthly' ? 'Billed monthly' : billingPeriod === 'quarterly' ? 'Billed quarterly' : 'Billed annually' }}
               </div>
             </div>
 
@@ -226,7 +237,7 @@
                 <svg class="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm font-medium">Everything in Early Bird</span>
+                <span class="text-zinc-300 text-sm font-medium">20+ courses available now (new drops added regularly)</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -238,7 +249,7 @@
                 <svg class="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">2000 AI assistant queries/month (Felix AI)</span>
+                <span class="text-zinc-300 text-sm">1,000 Felix AI queries per month</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -250,25 +261,13 @@
                 <svg class="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">Full AR + voice learning</span>
+                <span class="text-zinc-300 text-sm">Full AR plus voice learning</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">Personalized learning paths</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span class="text-zinc-300 text-sm">Downloadable certificates</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span class="text-zinc-300 text-sm">Exclusive content access</span>
+                <span class="text-zinc-300 text-sm">Certificates plus exclusive content</span>
               </li>
             </ul>
 
@@ -286,23 +285,25 @@
           </div>
         </div>
 
-        <!-- Tier 4: Enterprise Plan -->
+        <!-- Tier 4: Cosmic Founder -->
         <div class="relative group flex">
           <div class="absolute inset-0 bg-[#00121454] rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
           <div class="relative bg-[#00121454] backdrop-blur-sm border border-transparent rounded-2xl p-8 hover:border-cyan-700 transition-all duration-300 flex flex-col w-full">
             <div class="mb-6">
-              <h3 class="text-2xl font-bold text-white mb-2">Enterprise</h3>
-              <p class="text-zinc-400 text-sm">For schools & institutions</p>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-2xl font-bold text-white">Max (Advanced)</h3>
+              </div>
+              <p class="text-zinc-400 text-sm">Maximum individual access with the highest Felix AI limits.</p>
             </div>
 
             <!-- Pricing Options -->
             <div class="mb-6">
-              <!-- <div class="flex items-baseline gap-2 mb-4">
-                <span class="text-4xl font-bold text-white">$100</span>
-                <span class="text-zinc-400">/seat</span>
-              </div> -->
+              <div class="flex items-baseline gap-2 mb-4">
+                <span class="text-4xl font-bold text-white">{{ billingPeriod === 'monthly' ? '$29.99' : billingPeriod === "quarterly" ? '$80.97' : '$287.90' }}</span>
+                <span class="text-zinc-400">{{ billingPeriod === 'monthly' ? '/month' : billingPeriod === "quarterly" ? '/quarter' : '/year' }}</span>
+              </div>
               <div class="text-sm text-zinc-400">
-                Minimum 25 seats
+                {{ billingPeriod === 'monthly' ? 'Billed monthly' : billingPeriod === "quarterly" ? 'Billed quarterly' : 'Billed annually' }}
               </div>
             </div>
 
@@ -312,31 +313,99 @@
                 <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">Multi-seat access</span>
+                <span class="text-zinc-300 text-sm font-medium">40+ courses available now (new drops added regularly)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-zinc-300 text-sm">Real-time satellite tracking</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-zinc-300 text-sm">Advanced AI insights plus mastery tracking</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-zinc-300 text-sm">Full AR plus voice learning</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-zinc-300 text-sm">2,000 Felix AI queries per month</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-zinc-300 text-sm">Certificates plus exclusive content</span>
+              </li>
+            </ul>
+
+            <button 
+              @click="handleSubscribe('max')"
+              :disabled="processingTier !== null"
+              class="w-full inline-flex items-center gap-2 rounded-md bg-[linear-gradient(90deg,#1EDAFC_0%,#18AECA_100%)] hover:opacity-80 px-3.5 py-2 text-sm flex items-center justify-center font-medium tracking-tight cursor-pointer text-[#031619] focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 shadow-sm shadow-indigo-500/20"
+            >
+              <svg v-if="processingTier === 'max'" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span>{{ processingTier === 'max' ? 'Processing...' : 'Claim Your Spot' }}</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tier 5: Enterprise Plan -->
+        <div class="relative group flex">
+          <div class="absolute inset-0 bg-[#00121454] rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+          <div class="relative bg-[#00121454] backdrop-blur-sm border border-transparent rounded-2xl p-8 hover:border-cyan-700 transition-all duration-300 flex flex-col w-full">
+            <div class="mb-6">
+              <h3 class="text-2xl font-bold text-white mb-2">District / Campus (Enterprise)</h3>
+              <p class="text-zinc-400 text-sm">Built for schools: seats, dashboards, reports, and LMS integration.</p>
+            </div>
+
+            <!-- Pricing Options -->
+            <div class="mb-6">
+              <!-- <div class="flex items-baseline gap-2 mb-4">
+                <span class="text-4xl font-bold text-white">$100</span>
+                <span class="text-zinc-400">/seat</span>
+              </div> -->
+              <div class="text-sm text-zinc-400">
+                Contact us for pricing - Minimum 25 seats
+              </div>
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-zinc-300 text-sm">Minimum 25 seats (schools and institutions)Multi-seat access</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">2000 AI assistant queries/month (Felix AI)</span>
+                <span class="text-zinc-300 text-sm">Multi-seat access plus educator dashboards</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">Educator dashboards</span>
+                <span class="text-zinc-300 text-sm">Student tracking plus exportable reportsEducator dashboards</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">Student tracking & reports</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span class="text-zinc-300 text-sm">Curriculum integration</span>
+                <span class="text-zinc-300 text-sm">Curriculum integration plus teacher training</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -348,13 +417,7 @@
                 <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-zinc-300 text-sm">Teacher training & support</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span class="text-zinc-300 text-sm">API access for LMS</span>
+                <span class="text-zinc-300 text-sm">LMS / API integration</span>
               </li>
             </ul>
 
@@ -368,83 +431,6 @@
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
               <span>{{ processingTier === 'enterprise' ? 'Processing...' : 'Contact Sales' }}</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Tier 5: Cosmic Founder -->
-        <div class="relative group flex">
-          <div class="absolute inset-0 bg-[#00121454] rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-          <div class="relative bg-[#00121454] backdrop-blur-sm border border-transparent rounded-2xl p-8 hover:border-cyan-700 transition-all duration-300 flex flex-col w-full">
-            <div class="mb-6">
-              <div class="flex items-center justify-between mb-2">
-                <h3 class="text-2xl font-bold text-white">Cosmic Founder</h3>
-                <span class="px-2 py-1 bg-cyan-950 text-[#128397] text-xs font-bold rounded">LIMITED</span>
-              </div>
-              <p class="text-zinc-400 text-sm">First 10,000 users only</p>
-            </div>
-
-            <!-- Pricing -->
-            <div class="mb-6">
-              <div class="flex items-baseline gap-2 mb-2">
-                <span class="text-4xl font-bold text-white">$154.99</span>
-                <span class="text-zinc-400">lifetime</span>
-              </div>
-              <div class="text-sm text-[#128397] font-medium">
-                One-time payment
-              </div>
-            </div>
-
-            <!-- Features -->
-            <ul class="space-y-3 mb-8">
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span class="text-zinc-300 text-sm font-medium">Lifetime Premium access</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span class="text-zinc-300 text-sm">Exclusive "Cosmic Founder" badge</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span class="text-zinc-300 text-sm">VIP beta testing access</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span class="text-zinc-300 text-sm">Priority feature requests</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span class="text-zinc-300 text-sm">Annual virtual meetup with team</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-cyan-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span class="text-zinc-300 text-sm">Transferable once per lifetime</span>
-              </li>
-            </ul>
-
-            <button 
-              @click="handleSubscribe('founder')"
-              :disabled="processingTier !== null"
-              class="w-full inline-flex items-center gap-2 rounded-md bg-[linear-gradient(90deg,#1EDAFC_0%,#18AECA_100%)] hover:opacity-80 px-3.5 py-2 text-sm flex items-center justify-center font-medium tracking-tight cursor-pointer text-[#031619] focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 shadow-sm shadow-indigo-500/20"
-            >
-              <svg v-if="processingTier === 'founder'" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              <span>{{ processingTier === 'founder' ? 'Processing...' : 'Claim Your Spot' }}</span>
             </button>
           </div>
         </div>
